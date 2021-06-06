@@ -4,7 +4,11 @@ const winston = require("winston");
 
 module.exports = function () {
   mongoose
-    .connect(config.get("mongoUri"), { useNewUrlParser: true })
+    .connect(config.get("mongoUri"),
+     { useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex:true
+     })
     .then(() => {
       console.log(`Connected to Db`);
       winston.info("Connected to Database");
